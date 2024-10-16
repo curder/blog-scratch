@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" class="font-sans antialiased">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Post</title>
+  <link href="https://fonts.bunny.net/css?family=Miriam+Libre:400,700|Merriweather" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/styles/sunburst.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+<!--Header-->
+<header class="py-5 mb-10">
+  <div class="container mx-auto px-5 lg:max-w-screen-md">
+    <div class="flex items-center flex-col lg:flex-row">
+      <a href="#" class="flex items-center no-underline text-brand" style="color: #FF2D20;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-12 h-12" viewBox="0 0 24 24" stroke-width="1.5"
+             stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
+        </svg>
+        <span class="ml-2 text-3xl font-semibold">戏里戏外</span>
+      </a>
+      <div class="lg:ml-auto mt-10 lg:mt-0 flex items-center space-x-5">
+        <a href="#" class="no-underline hover:underline hover:underline-offset-2 uppercase">Categories</a>
+        <a href="#" class="no-underline hover:underline hover:underline-offset-2 uppercase">Tags</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!--Content-->
+<div class="container mx-auto px-5 lg:max-w-screen-md mt-20">
+  <h1 class="mb-5 text-4xl font-bold font-sans">Herd 1.11 Now Available</h1>
+  <div class="flex items-center text-sm text-light">
+    <span>2024-09-12</span>
+  </div>
+
+  <div class="mt-5 leading-loose flex flex-col justify-center items-center post-body font-serif">
+    <p>We're thrilled to announce the next big step for <a href="https://herd.laravel.com">Laravel Herd</a>, making the
+      best development environment for macOS and Windows users even better. This update ships an integration with <a
+        href="https://forge.laravel.com">Laravel Forge</a>, a profiler, a way to store your project configuration in
+      your repository, and massive improvements for the dump debugger.</p>
+    <h2>Forge Integration</h2>
+    <p>Herd 1.11 integrates directly with Laravel Forge and allows you to deploy your applications right from the Herd
+      UI. You can open the Forge dashboard of any connected site and even SSH into the related server with a single
+      click. Herd saves the connection between your local and your remote site on Forge in a <code>herd.yml</code> file
+      and makes sharing the whole setup with your team super easy.</p>
+    <p><img src="https://herd.laravel.com/images/blog/herd-1-11-sites.png"
+            alt="Screenshot of the Forge integration within the Herd sites window"/></p>
+    <p>If you're deploying a site to more than one destination, we've got you covered. You can connect multiple Forge
+      accounts and link any local site to staging and production sites at the same time.</p>
+    <p><a href="https://herd.laravel.com/docs/1/integrations/laravel-forge">Learn more about the Forge integration
+      here</a>.</p>
+    <h2>Profiler</h2>
+    <p>Herd 1.11 makes the install process for the popular SPX profiler as simple as running a single command from your
+      terminal. This allows you to identify performance issues in your application while providing an easy access to the
+      profiler dashboard as well as custom commands for the Herd CLI.</p>
+    <p><img src="https://herd.laravel.com/images/blog/herd-1-11-profiler.png"
+            alt="Screenshot of the profiler dashboard"/></p>
+    <p>For profiling PHP on the command line, you can use <code>herd profile</code> command and quickly get the
+      information that you need to crush that annoying performance bottleneck.</p>
+    <p><a href="https://herd.laravel.com/docs/1/advanced-usage/profiler">Learn more about the profiler here</a>.</p>
+    <h2>Herd.yml</h2>
+    <p>We're also shipping one of our most requested features: a way to share the Herd configuration of a site with your
+      team. Simply run <code>herd init</code> to create a <code>herd.yml</code> file for a site and then run the same
+      command on a new machine to automatically configure the site. If you are using <a
+        href="https://herd.laravel.com/#plans">Herd Pro</a>, you can set up services like databases, queues, and even
+      broadcasting servers and S3 compatible storage engines in seconds.</p>
+    <pre><code class="language-yaml">name: herd-website
+php: '8.3'
+secured: true
+aliases:
+    - herd-laravel
+services:
+    mysql:
+        version: 8.0.36
+        port: '${DB_PORT}'
+    redis:
+        version: 7.0.0
+        port: '${REDIS_PORT}'
+</code></pre>
+    <p>This makes it easy to have the same setup across multiple developers and keep everything in sync. Just run <code>herd
+      init</code> and you're up and running.</p>
+    <p><a href="https://herd.laravel.com/docs/1/advanced-usage/herd-yaml">Learn more about shared configurations
+      here</a>.</p>
+    <h2>Reverb via HTTPS</h2>
+    <p>Within Herd, it's now incredibly easy to set up <a href="https://reverb.laravel.com">Laravel Reverb</a> as a
+      dedicated service and serve it via a secure HTTPS connection. Simply add a new Reverb instance and select <code>Serve
+        over HTTPS</code>. After that, you can set your <code>REVERB_PORT</code> to <code>443</code> and the <code>REVERB_SCHEME</code>
+      to <code>https</code> in your environment file. It's that easy because we've solved the hard things.</p>
+    <p><a href="https://herd.laravel.com/docs/1/advanced-usage/herd-yaml">Learn more about the new Reverb features
+      here</a>.</p>
+    <h2>Dumps</h2>
+    <p>Dump-debugging is incredible popular and Herd's massively improved dump feature uses its own PHP extension to
+      dump queries, jobs, HTTP requests, logs, and even Blade views without installing a package. It just works.</p>
+    <p><img src="https://herd.laravel.com/images/blog/herd-1-11-dumps.png"
+            alt="Screenshot of the Dump window of Herd showing the new settings"/></p>
+    <p>You can selectively enable dumping for all features and filter Eloquent queries by their time to spend more time
+      solving problems and less time finding bugs.</p>
+    <p><a href="https://herd.laravel.com/docs/1/herd-pro/dumps">Learn more about all dump features here</a>.</p>
+    <p>After working on this new release for months, we're super happy to ship this update for macOS today and for
+      Windows soon.</p>
+    <p><a href="https://herd.laravel.com/download">Download herd for macOS</a><br/>
+      <a href="https://herd.laravel.com/download/windows">Download herd for Windows</a></p>
+  </div>
+</div>
+
+<!--Footer-->
+<footer class="border-t border-lighter mt-20">
+  <div class="container mx-auto px-5 lg:max-w-screen-lg">
+    <div class="text-muted py-10 text-center">
+      Follow the <a class="underline underline-offset-4 hover:no-underline" href="/feed">RSS Feed</a>.
+    </div>
+  </div>
+</footer>
+<style>
+.font-sans {
+  font-family: "Miriam Libre", system-ui, BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important
+}
+.font-serif {
+  font-family: Merriweather,Constantia,Lucida Bright,Lucidabright,Lucida Serif,Lucida,DejaVu Serif,Bitstream Vera Serif,Liberation Serif,Georgia,serif
+}
+.text-light {
+  color: #546574;
+}
+
+.post-body blockquote, .post-body h1, .post-body h2, .post-body h3, .post-body ol, .post-body p, .post-body pre, .post-body ul {
+  min-width: 100%;
+  max-width: 100%
+}
+.post-body a {
+  text-decoration: underline;
+}
+.post-body a:hover {
+  text-decoration: none;
+}
+
+.post-body p {
+  margin-bottom: 2rem
+}
+
+.post-body blockquote p {
+  margin-bottom: 0
+}
+
+.post-body blockquote p + p {
+  margin-top: 2rem
+}
+
+.post-body pre {
+  background: hsla(0, 0%, 93.3%, .35);
+  border: 2px solid rgba(0, 0, 0, .05);
+  color: #000;
+  overflow-x: auto;
+  padding: .5em;
+  margin-bottom: 33px;
+  font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace
+}
+
+.post-body code {
+  color: #22292f
+}
+
+.post-body code:not(.hljs) {
+  background: #f0f2f1;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
+  font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  border-radius: .25rem;
+  word-break: break-word
+}
+
+.hljs {
+  background: transparent !important
+}
+
+.post-body h2 {
+  margin-bottom: 2rem;
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.post-body h3 {
+  font-size: 1.125rem
+}
+
+.post-body h3, .post-body ol, .post-body ul {
+  margin-bottom: 2rem
+}
+
+.post-body ol li, .post-body ul li {
+  margin-bottom: .75rem
+}
+
+.post-body .embedded_image {
+  margin-bottom: 2rem
+}
+
+.post-body .embedded_image[data-layout=wide] img {
+  max-width: 70rem
+}
+
+@media screen and (max-width: 1024px) {
+  .post-body .embedded_image[data-layout=wide] img {
+    max-width: 100%
+  }
+}
+
+.post-body .embedded_image img {
+  max-width: 100%;
+  display: block
+}
+
+.post-body .embedded_image p {
+  margin-top: .75rem;
+  text-align: center;
+  color: #546574;
+  font-size: .875rem;
+  margin-bottom: 0
+}
+
+.post-body .inline_html {
+  margin-bottom: 2rem;
+  width: 100%
+}
+
+.post-body blockquote {
+  margin-bottom: 2rem;
+  padding-left: 1.25rem;
+  font-style: italic;
+  border-left: 3px solid rgba(0, 0, 0, .84)
+}
+
+.wink.post-body img {
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem
+}
+
+</style>
+</body>
+</html>
